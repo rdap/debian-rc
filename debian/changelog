@@ -1,3 +1,10 @@
+rc (1.7.1-2) unstable; urgency=low
+
+  * Compile against libreadline5.
+  * Remove period and leading capitalization from description in control file.
+
+ -- Decklin Foster <decklin@red-bean.com>  Sat, 25 Dec 2004 08:28:05 -0500
+
 rc (1.7.1-1) unstable; urgency=low
 
   * New upstream release
