@@ -1,3 +1,22 @@
+rc (1.7.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Update to policy 3.6.1 and debhelper 4
+
+ -- Decklin Foster <decklin@red-bean.com>  Sat, 20 Sep 2003 21:18:24 -0400
+
+rc (1.7-1) unstable; urgency=low
+
+  * New upstream release. 1.7 is finally done!
+
+ -- Decklin Foster <decklin@red-bean.com>  Fri, 21 Jun 2002 17:45:08 -0400
+
+rc (1.6c7-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Decklin Foster <decklin@red-bean.com>  Thu, 23 May 2002 15:25:46 -0400
+
 rc (1.6c6-1) unstable; urgency=low
 
   * New upstream release

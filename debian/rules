@@ -2,15 +2,11 @@
 # Sample debian/rules that uses debhelper.
 # This file is public domain software, originally written by Joey Hess.
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
-
-# This is the debhelper compatibility version to use.
-export DH_COMPAT=3
-
-DEB_CFLAGS = -O2
-ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
-DEB_CFLAGS += -g
+DEB_CFLAGS = -Wall -g
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+DEB_CFLAGS += -O0
+else
+DEB_CFLAGS += -O2
 endif
 
 export DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
