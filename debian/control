@@ -1,0 +1,11 @@
+Source: rc
+Section: shells
+Priority: optional
+Maintainer: Ian Murdock <imurdock@debian.org>
+Standards-Version: 2.3.0.1
+
+Package: rc
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: An implementation of the AT&T Plan 9 shell.
+ es is similar and probably better.

@@ -2170,7 +2170,7 @@ if eval "test \"`echo '$ac_cv_lib_'$ac_lib_var`\" = yes"; then
   cat >> confdefs.h <<\EOF
 #define READLINE 1
 EOF
- LIBS="$LIBS -lreadline -ltermcap"
+ LIBS="$LIBS -lreadline -lncurses"
 else
   echo "$ac_t""no" 1>&6
 echo "configure: warning: readline library not found" 1>&2

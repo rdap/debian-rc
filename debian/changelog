@@ -1,0 +1,9 @@
+rc (1.5b2-0.1) unstable; urgency=low
+
+  * Non-maintainer release
+  * New upstream release
+  * Compile with libc6
+  * New source format
+
+ -- Mark Baker <mbaker@iee.org>  Mon, 17 Nov 1997 20:07:00 +0000
+
