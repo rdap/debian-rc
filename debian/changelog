@@ -1,3 +1,82 @@
+rc (1.6c6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Decklin Foster <decklin@red-bean.com>  Sat,  9 Feb 2002 18:15:50 -0500
+
+rc (1.6c5-1) unstable; urgency=low
+
+  * New upstream release, another RC of rc (ha ha!)
+  * Revert config.{sub,guess} stuff; these aren't even used upstream.
+
+ -- Decklin Foster <decklin@red-bean.com>  Thu, 22 Nov 2001 00:15:47 -0500
+
+rc (1.6c4-1) unstable; urgency=low
+
+  * New upstream release. This is a release candidate for rc 1.7, so file bugs
+    if you got 'em.
+
+ -- Decklin Foster <decklin@red-bean.com>  Wed, 31 Oct 2001 17:08:33 -0500
+
+rc (1.6b3-1) unstable; urgency=low
+
+  * New upstream release:
+    - Patches from #99603 and #80902 are now merged
+    - Fixed premature exit and uninterruptible looping bugs
+    - -I (noninteractive) option added, -V replaced with $version
+    - Handling of ^A in lists improved
+  * Fixed 'CFLAGS' typo in debian/rules
+  * Use autotools-dev config.{sub,guess} files, and call ./configure with the
+    proper architecture options.
+  * Updated Standards-Version to 3.5.6
+
+ -- Decklin Foster <decklin@red-bean.com>  Mon, 15 Oct 2001 20:25:50 -0400
+
+rc (1.6b2-4) unstable; urgency=low
+
+  * Updated to debhelper v3 and policy 3.5.4.
+    - Since we're no longer using dh_installmanpages, history.1 (which
+      documents an extra binary not included in the package) will not
+      be installed. (Closes: #99603)
+    - Added support for DEB_BUILD_OPTIONS.
+
+ -- Decklin Foster <decklin@red-bean.com>  Sat,  2 Jun 2001 16:17:52 -0400
+
+rc (1.6b2-3) unstable; urgency=low
+
+  * Applied patch to build on PPC (Closes: #80902)
+  * debian/rules: added dh_testversion check.
+  * install AUTHORS into /usr/share/doc/rc.
+
+ -- Decklin Foster <decklin@red-bean.com>  Wed,  3 Jan 2001 12:43:57 -0500
+
+rc (1.6b2-2) unstable; urgency=low
+
+  * Repackaged from scratch using debhelper.
+  * Applied upstream patch for the "~ () '*'" bug (Closes: #62339)
+
+ -- Decklin Foster <decklin@red-bean.com>  Mon, 30 Oct 2000 01:29:38 -0500
+
+rc (1.6b2-1) unstable; urgency=low
+
+  * New upstream release. This incorporates the __va_copy patches, so
+    they are no longer included in the Debian .diff.gz.
+  * Incorporated menu file from /usr/lib/menu/default (Closes: #46611)
+  * debian/control: added Build-Depends
+  * debian/copyright: updated URL for upstream sources
+
+ -- Decklin Foster <decklin@red-bean.com>  Wed, 30 Aug 2000 11:25:06 -0400
+
+rc (1.6-4) unstable; urgency=low
+
+  * New maintainer
+  * Recompile against libreadline4 (Closes: #65312)
+  * Move /usr/doc/rc to /usr/share/doc/rc
+  * Generate Section: and Priority: in control file
+  * Fixed description field
+
+ -- Decklin Foster <decklin@red-bean.com>  Sun, 16 Jul 2000 12:51:20 -0500
+
 rc (1.6-3) unstable; urgency=low
 
   * Now supply __va_copy macro when not present: fixes #41930
@@ -45,4 +124,3 @@ rc (1.5b2-0.1) unstable; urgency=low
   * New source format
 
  -- Mark Baker <mbaker@iee.org>  Mon, 17 Nov 1997 20:07:00 +0000
-

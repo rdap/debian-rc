@@ -3,12 +3,8 @@ rc was written by Byron Rakitzis, and is currently maintained by
 Tim Goodwin <tjg@star.le.ac.uk>.
 
 This package was put together by Dale Scheetz <dwarf@polaris.net>,
-from sources obtained from ftp://ftp.white.toronto.edu/pub/rc
-
-Changes:
- * added Debian GNU/Linux package maintenance system files
- * added necessary `#ifdef's and `#ifndef's for compilation
-   under Linux
+from sources obtained from http://www.star.le.ac.uk/~tjg/rc/. It is
+currently maintained by Decklin Foster <decklin@red-bean.com>.
 
 /*
  * Copyright 1991 Byron Rakitzis.  All rights reserved.

@@ -20,7 +20,6 @@ static bool name(Format *format, int ignore) { \
 }
 
 Flag(uconv,	FMT_unsigned)
-Flag(hconv,	FMT_short)
 Flag(rc_lconv,	FMT_long)
 
 #if HAVE_QUAD_T
@@ -70,9 +69,9 @@ static bool sconv(Format *format, int ignore) {
 	return FALSE;
 }
 
-static char *utoa(unsigned long u, char *t, unsigned int radix, const char *digit) {
+static char *rc_utoa(unsigned long u, char *t, unsigned int radix, const char *digit) {
 	if (u >= radix) {
-		t = utoa(u / radix, t, radix, digit);
+		t = rc_utoa(u / radix, t, radix, digit);
 		u %= radix;
 	}
 	*t++ = digit[u];
@@ -103,8 +102,6 @@ static void intconv(Format *format, unsigned int radix, int upper, const char *a
 
 	if (flags & FMT_long)
 		n = va_arg(format->args, long);
-	else if (flags & FMT_short)
-		n = va_arg(format->args, short);
 	else
 		n = va_arg(format->args, int);
 
@@ -120,7 +117,7 @@ static void intconv(Format *format, unsigned int radix, int upper, const char *a
 		while (*altform != '\0')
 			prefix[pre++] = *altform++;
 
-	len = utoa(u, number, radix, table[upper]) - number;
+	len = rc_utoa(u, number, radix, table[upper]) - number;
 	if ((flags & FMT_f2set) && (size_t) format->f2 > len)
 		zeroes = format->f2 - len;
 	else
@@ -202,7 +199,6 @@ static void inittab(void) {
 	fmttab['%'] = pctconv;
 
 	fmttab['u'] = uconv;
-	fmttab['h'] = hconv;
 	fmttab['l'] = rc_lconv;
 	fmttab['#'] = altconv;
 	fmttab['-'] = leftconv;
@@ -283,10 +279,6 @@ extern int printfmt(Format *format, const char *fmt) {
 /*
  * the public entry points
  */
- 
-#ifndef __va_copy
-#define __va_copy(dst,src) (dst) = (src)
-#endif
 
 extern int fmtprint(Format *format, const char *fmt,...) {
 	int n = -format->flushed;
