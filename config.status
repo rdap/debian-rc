@@ -2,7 +2,7 @@
 # Generated automatically by configure.
 # Run this file to recreate the current configuration.
 # This directory was configured as follows,
-# on host aziraphale.pet.cam.ac.uk:
+# on host kuolema:
 #
 # ./configure  --prefix=/usr --with-readline --with-addon
 #
@@ -255,9 +255,9 @@ ${ac_eA}HAVE_RESTARTABLE_SYSCALLS${ac_eB}HAVE_RESTARTABLE_SYSCALLS${ac_eC}1${ac_
 ${ac_dA}HASH_BANG${ac_dB}HASH_BANG${ac_dC}1${ac_dD}
 ${ac_uA}HASH_BANG${ac_uB}HASH_BANG${ac_uC}1${ac_uD}
 ${ac_eA}HASH_BANG${ac_eB}HASH_BANG${ac_eC}1${ac_eD}
-${ac_dA}HAVE_DEV_FD${ac_dB}HAVE_DEV_FD${ac_dC}1${ac_dD}
-${ac_uA}HAVE_DEV_FD${ac_uB}HAVE_DEV_FD${ac_uC}1${ac_uD}
-${ac_eA}HAVE_DEV_FD${ac_eB}HAVE_DEV_FD${ac_eC}1${ac_eD}
+${ac_dA}HAVE_PROC_SELF_FD${ac_dB}HAVE_PROC_SELF_FD${ac_dC}1${ac_dD}
+${ac_uA}HAVE_PROC_SELF_FD${ac_uB}HAVE_PROC_SELF_FD${ac_uC}1${ac_uD}
+${ac_eA}HAVE_PROC_SELF_FD${ac_eB}HAVE_PROC_SELF_FD${ac_eC}1${ac_eD}
 ${ac_dA}RC_ECHO${ac_dB}RC_ECHO${ac_dC}1${ac_dD}
 ${ac_uA}RC_ECHO${ac_uB}RC_ECHO${ac_uC}1${ac_uD}
 ${ac_eA}RC_ECHO${ac_eB}RC_ECHO${ac_eC}1${ac_eD}
@@ -276,15 +276,18 @@ ${ac_eA}PROTECT_ENV${ac_eB}PROTECT_ENV${ac_eC}1${ac_eD}
 ${ac_dA}DEFAULTINTERP${ac_dB}DEFAULTINTERP${ac_dC}"/bin/sh"${ac_dD}
 ${ac_uA}DEFAULTINTERP${ac_uB}DEFAULTINTERP${ac_uC}"/bin/sh"${ac_uD}
 ${ac_eA}DEFAULTINTERP${ac_eB}DEFAULTINTERP${ac_eC}"/bin/sh"${ac_eD}
-${ac_dA}READLINE${ac_dB}READLINE${ac_dC}1${ac_dD}
-${ac_uA}READLINE${ac_uB}READLINE${ac_uC}1${ac_uD}
-${ac_eA}READLINE${ac_eB}READLINE${ac_eC}1${ac_eD}
+${ac_dA}DEFAULTPATH${ac_dB}DEFAULTPATH${ac_dC}"/usr/local/bin","/usr/bin","/bin","."${ac_dD}
+${ac_uA}DEFAULTPATH${ac_uB}DEFAULTPATH${ac_uC}"/usr/local/bin","/usr/bin","/bin","."${ac_uD}
+${ac_eA}DEFAULTPATH${ac_eB}DEFAULTPATH${ac_eC}"/usr/local/bin","/usr/bin","/bin","."${ac_eD}
 CEOF
   sed -f conftest.frag conftest.in > conftest.out
   rm -f conftest.in
   mv conftest.out conftest.in
 
   cat > conftest.frag <<CEOF
+${ac_dA}READLINE${ac_dB}READLINE${ac_dC}1${ac_dD}
+${ac_uA}READLINE${ac_uB}READLINE${ac_uC}1${ac_uD}
+${ac_eA}READLINE${ac_eB}READLINE${ac_eC}1${ac_eD}
 s%^[ 	]*#[ 	]*undef[ 	][ 	]*[a-zA-Z_][a-zA-Z_0-9]*%/* & */%
 CEOF
   sed -f conftest.frag conftest.in > conftest.out

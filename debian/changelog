@@ -1,3 +1,22 @@
+rc (1.5b2-0.3) frozen unstable; urgency=medium
+
+  * Another non-maintainer upload
+  * Reupload into frozen because the distribution was changed suddenly
+    *after* the last upload so it went into the wrong one.
+
+ -- Martin Schulze <joey@finlandia.infodrom.north.de>  Tue,  3 Nov 1998 23:43:57 +0100
+
+rc (1.5b2-0.2) unstable; urgency=low, closes=3607 3206 24020
+
+  * Another non-maintainer release
+  * Set maintainer to debian-qa, i.e. orphaning it
+  * Adjusted Standards-Version
+  * Extended description (closes: Bug#3607)
+  * rc does not quit by hitting C-c anymore (closes: Bug#3206)
+  * Added script to detect signals, written by Raul Miller (closes: Bug#24020)
+
+ -- Martin Schulze <joey@finlandia.infodrom.north.de>  Sat, 31 Oct 1998 11:22:46 +0100
+
 rc (1.5b2-0.1) unstable; urgency=low
 
   * Non-maintainer release

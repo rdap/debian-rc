@@ -38,6 +38,7 @@ binary-arch: checkroot build
 	install -m 644 debian/changelog debian/tmp/usr/doc/rc/changelog.Debian
 	gzip -9v debian/tmp/usr/doc/rc/*
 	install -m 644 debian/copyright debian/tmp/usr/doc/rc
+	install -m 755 debian/detect-signals debian/tmp/usr/doc/rc
 	# Standard package building stuff
 	dpkg-shlibdeps debian/tmp/usr/bin/rc
 	dpkg-gencontrol -prc

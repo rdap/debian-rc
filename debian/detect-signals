@@ -1,0 +1,33 @@
+#! /bin/sh
+
+# Date: Sun, 28 Jun 1998 10:55:16 -0400
+# From: Raul Miller <rdm@test.legislate.com>
+
+rm -f .signalfiles .oldsignalfiles
+touch .oldsignalfiles
+echo signal.h >.signalfiles
+
+until cmp .signalfiles .oldsignalfiles >/dev/null 2>&1; do
+    mv .signalfiles .oldsignalfiles
+    (
+	cat .oldsignalfiles
+	while read f; do
+	grep '#include.*<.*[.]h>' /usr/include/$f 2>/dev/null \
+	    | sed '   s/.*<//
+                                                s/>.*//
+                                        '
+	done <.oldsignalfiles
+    ) | sort -u > .signalfiles
+done
+
+while read f; do
+    if grep >/dev/null SIGINT /usr/include/$f 2>/dev/null; then
+	echo $f;
+	rm -f .signalfiles .oldsignalfiles
+	exit 0
+    fi
+done <.signalfiles
+
+echo "Can't find signal definitions" >&2
+rm -f .signalfiles .oldsignalfiles
+exit 1
