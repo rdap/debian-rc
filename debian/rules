@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 #
-# Debian rules file for rc. Written by Mark Baker, loosely based on the
-# (old source format) one by Ian Murdock.
+# Debian rules file for rc. Re-written by Dale Scheetz from that provided by
+# Mark Baker, loosely based on the (old source format) one by Ian Murdock.
 
 package = rc
 
@@ -14,9 +14,8 @@ build:
 clean:
 	$(checkdir)
 	-rm -f build
-	-make clean
-	-rm Makefile config.h
-	-rm -rf debian/*substvars debian/tmp
+	if [ -f Makefile ] ; then make distclean ; fi
+	-rm -rf *~ debian/*~ debian/tmp debian/substvars* debian/files*
 
 binary-indep: checkroot build
 	# No binary-independent packages to build
@@ -34,11 +33,10 @@ binary-arch: checkroot build
 	gzip -9v debian/tmp/usr/man/man1/rc.1
 	# Install documentation
 	install -m 644 README EXAMPLES debian/tmp/usr/doc/rc
-	install -m 644 CHANGES debian/tmp/usr/doc/rc/changelog
+	install -m 644 ChangeLog debian/tmp/usr/doc/rc/changelog
 	install -m 644 debian/changelog debian/tmp/usr/doc/rc/changelog.Debian
 	gzip -9v debian/tmp/usr/doc/rc/*
 	install -m 644 debian/copyright debian/tmp/usr/doc/rc
-	install -m 755 debian/detect-signals debian/tmp/usr/doc/rc
 	# Standard package building stuff
 	dpkg-shlibdeps debian/tmp/usr/bin/rc
 	dpkg-gencontrol -prc

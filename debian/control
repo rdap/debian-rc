@@ -1,17 +1,11 @@
 Source: rc
 Section: shells
 Priority: optional
-Maintainer: Debian QA group <debian-qa@lists.debian.org>
-Standards-Version: 2.4.0.0
+Maintainer: Dale Scheetz <dwarf@polaris.net>
+Standards-Version: 2.3.0.1
 
 Package: rc
 Architecture: any
 Depends: ${shlibs:Depends}
 Description: An implementation of the AT&T Plan 9 shell.
- This is a command interpreter and programming language similar to sh.
- It is based on the AT&T Plan 9 shell of the same name.  The shell
- offers a C-like syntax (much more so than the C shell), and a
- powerful mechanism for manipulat- ing variables.  It is reasonably
- small and reasonably fast, especially when compared to contemporary
- shells.  Its use is intended to be interactive, but the language
- lends itself well to scripts.
+ es is similar and probably better.
