@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$1" = "configure" ] && [ -z "$2" ]; then
+    /usr/sbin/add-shell /usr/bin/rc
+fi
+
+#DEBHELPER#

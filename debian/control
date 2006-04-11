@@ -2,7 +2,7 @@ Source: rc
 Section: shells
 Priority: optional
 Maintainer: Decklin Foster <decklin@red-bean.com>
-Standards-Version: 3.6.1
+Standards-Version: 3.6.2
 Build-Depends: debhelper (>= 4.0.0), libncurses5-dev, libreadline5-dev
 
 Package: rc
