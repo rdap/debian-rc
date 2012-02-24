@@ -1,69 +1,54 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# This file is public domain software, originally written by Joey Hess.
 
-DEB_CFLAGS = -Wall -g
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-DEB_CFLAGS += -O0
-else
-DEB_CFLAGS += -O2
+DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+configure_flags = --build $(DEB_BUILD_GNU_TYPE)
+ifneq "$(DEB_BUILD_GNU_TYPE)" "$(DEB_HOST_GNU_TYPE)"
+	configure_flags += --host $(DEB_HOST_GNU_TYPE)
 endif
 
-export DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+cflags = $(shell dpkg-buildflags --get CFLAGS)
+cppflags = $(shell dpkg-buildflags --get CPPFLAGS)
+ldflags = $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 
-configure: configure-stamp
-configure-stamp:
+configure_flags += \
+	--prefix=/usr \
+	--mandir='$${prefix}/share/man' \
+	--with-readline \
+	--with-addon \
+	CFLAGS='$(cflags)' \
+	CPPFLAGS='$(cppflags)' \
+	LDFLAGS='$(ldflags)' \
+
+autoconf-stamp:
 	dh_testdir
+	autoreconf -vfi
+	touch $(@)
 
-	# Add here commands to configure the package.
-	CFLAGS='$(DEB_CFLAGS)' ./configure --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE) --prefix=/usr --mandir='$${prefix}/share/man' --infodir='$${prefix}/share/info' --with-readline --with-addon
-
-	touch configure-stamp
-
-build: configure-stamp build-stamp
-build-stamp:
+obj/config.status: autoconf-stamp
 	dh_testdir
+	mkdir -p $(dir $@)
+	cd obj && ../configure $(configure_flags) 
 
-	# Add here commands to compile the package.
-	$(MAKE)
-
-	touch build-stamp
-
-clean:
+obj/build-stamp: obj/config.status
 	dh_testdir
-	dh_testroot
-	rm -f build-stamp configure-stamp
+	$(MAKE) -C obj
+	touch $(@)
 
-	# Add here commands to clean up after the build process.
-	-$(MAKE) distclean
+.PHONY: build build-arch build-indep
+build build-arch: obj/build-stamp
 
-	dh_clean
-
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-
-	# Add here commands to install the package into debian/<packagename>
-	$(MAKE) prefix=$(CURDIR)/debian/rc/usr install
-
-
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
-binary-arch: build install
+.PHONY: binary binary-arch binary-indep
+binary binary-arch: obj/build-stamp
 	dh_testdir
 	dh_testroot
+	dh_prep
+	$(MAKE) -C obj DESTDIR=../debian/rc install
 	dh_installdocs
-	dh_installexamples
 	dh_installmenu
 	dh_installman
-	dh_installinfo
-	dh_installchangelogs ChangeLog
+	dh_installchangelogs
 	dh_link
 	dh_strip
 	dh_compress
@@ -74,5 +59,13 @@ binary-arch: build install
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure
+.PHONY: clean
+clean:
+	dh_testdir
+	rm -rf obj/ autoconf-stamp
+	dh_clean
+
+.SECONDARY:
+.NOTPARALLEL:
+
+# vim:ts=4 sw=4 noet

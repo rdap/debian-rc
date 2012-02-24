@@ -1,3 +1,42 @@
+rc (1.7.1-4) unstable; urgency=low
+
+  * New maintainer (closes: #660508). Thanks to Decklin Foster for his past
+    work.
+  * Add ${misc:Depends} to Depends.
+  * Rewrite debian/rules from scratch.
+    + Pass --configure to the configure script only when cross-building.
+    + Build out-of-tree.
+    + Don't ignore ‘make distclean’ in the clean target; delete the whole
+      build directory instead.
+    + Don't pass --info-dir to the configure script, and don't call
+      dh_installinfo, since there is no info documentation anyway.
+    + Link using --as-needed, in order to avoid dependency on libtinfo.
+  * Regerate autoconf files at build time:
+    + Add build-dependency on autoconf, automake.
+    + Add extend-diff-ignore to debian/source/options, to ignore regenerated
+      files.
+    + Update debian/rules.
+  * Pass {C,CPP,LD}FLAGS acquired from dpkg-buildflags to the configure
+    script:
+    + Add build-dependency on dpkg-dev (>= 1.15.7), for dpkg-buildflags support.
+    + Update debian/rules.
+  * Bump debian/compat to 7. Bump build-dependency on debhelper to >= 7.
+  * Remove debian/rc.dirs; it's not needed as upstream makefiles creates
+    needed directories anyway.
+  * Remove an article from the package synopsis. Re-wrap the long description.
+  * Convert to source format 3.0 (quilt).
+    + Add debian/source/format.
+  * Bump standards version to 3.9.3.
+    + Change menu sertion from “Apps/Shells” to “Applications/Shells”.
+  * Don't ignore errors in maintainer scripts.
+  * Don't hardcode paths to {add,remove}-shell in maintainer scripts.
+  * Add watch file.
+  * Rename debian/rc.copyright to debian/copyright.
+  * Update the copyright file (closes: #367004). Thanks to Harri Haataja for
+    the bug report.
+
+ -- Jakub Wilk <jwilk@debian.org>  Fri, 24 Feb 2012 20:00:41 +0100
+
 rc (1.7.1-3.1) unstable; urgency=low
 
   * Non-maintainer upload.
