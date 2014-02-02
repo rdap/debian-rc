@@ -1,0 +1,8 @@
+aclocal-quoting.diff
+configure-modernize-ac-init-automake.diff
+which-error-handling.diff
+panic-attribute-noreturn.diff
+trip-secure-tmp.diff
+trip-hide-envvars.diff
+typos.diff
+manpage-typography.diff

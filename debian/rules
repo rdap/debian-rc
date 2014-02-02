@@ -8,7 +8,7 @@ ifneq "$(DEB_BUILD_GNU_TYPE)" "$(DEB_HOST_GNU_TYPE)"
 	configure_flags += --host $(DEB_HOST_GNU_TYPE)
 endif
 
-cflags = $(shell dpkg-buildflags --get CFLAGS)
+cflags = $(shell dpkg-buildflags --get CFLAGS) -Werror=array-bounds -fvisibility=hidden
 cppflags = $(shell dpkg-buildflags --get CPPFLAGS)
 ldflags = $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 
@@ -21,19 +21,22 @@ configure_flags += \
 	CPPFLAGS='$(cppflags)' \
 	LDFLAGS='$(ldflags)' \
 
-autoconf-stamp:
-	dh_testdir
+autoconf-stamp: debian/control
 	autoreconf -vfi
 	touch $(@)
 
 obj/config.status: autoconf-stamp
-	dh_testdir
 	mkdir -p $(dir $@)
 	cd obj && ../configure $(configure_flags) 
 
-obj/build-stamp: obj/config.status
-	dh_testdir
+parse.output:
+	byacc -v -o parse.c parse.y
+
+obj/build-stamp: obj/config.status parse.output
 	$(MAKE) -C obj
+ifeq ($(filter nocheck,$(DEB_BUILD_OPTIONS)),)
+	cd obj && ./rc -p < ../trip.rc
+endif
 	touch $(@)
 
 .PHONY: build build-arch build-indep
@@ -41,7 +44,6 @@ build build-arch: obj/build-stamp
 
 .PHONY: binary binary-arch binary-indep
 binary binary-arch: obj/build-stamp
-	dh_testdir
 	dh_testroot
 	dh_prep
 	$(MAKE) -C obj DESTDIR=../debian/rc install
@@ -51,6 +53,7 @@ binary binary-arch: obj/build-stamp
 	dh_installchangelogs
 	dh_link
 	dh_strip
+	dh_buildinfo
 	dh_compress
 	dh_fixperms
 	dh_installdeb
@@ -61,9 +64,9 @@ binary binary-arch: obj/build-stamp
 
 .PHONY: clean
 clean:
-	dh_testdir
-	rm -rf obj/ autoconf-stamp
 	dh_clean
+	rm -rf obj/ autoconf-stamp
+	rm -f parse.output
 
 .SECONDARY:
 .NOTPARALLEL:

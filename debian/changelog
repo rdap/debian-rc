@@ -1,3 +1,44 @@
+rc (1.7.1-5) unstable; urgency=low
+
+  * Add patch (aclocal-quoting.diff) to fix underquoted calls to AC_DEFUN in
+    acinclude.m4.
+  * Add patch (configure-modernize-ac-init-automake.diff) to modernize the
+    AM_INIT_AUTOMAKE call in the configure script.
+  * Add “compile” to the list of ignored files in debian/source/options.
+  * Add patch (panic-attribute-noreturn.diff) to mark the panic() function
+    with attribute noreturn, in order to avoid false positive warnings about
+    array bounds.
+  * Build with -Werror=array-bounds.
+  * Build with -fvisibility=hidden, in order to avoid false positive
+    binary-file-built-without-LFS-support lintian tag.
+  * Add patch (which-error-handling.diff) to improve error handling in the
+    which() function.
+  * Rebuild parse.c at build time.
+    + Update debian/rules.
+    + Add parse.c to the list of ignored files in debian/source/options.
+    + Add byacc to Build-Depends.
+  * Bump standards version to 3.9.5 (no changes needed).
+  * Add patch (trip-secure-tmp.diff) to fix insecure use of /tmp in the test
+    suite (closes: #737125).
+  * Add patch (trip-hide-envvars.diff) to hide environment variables from the
+    test suite output, so that they are not accidentally exposed in a build log.
+  * Run tests at build time.
+    + Update debian/rules.
+    + Add procpc to Build-Depends.
+  * Add DEP-8 tests.
+  * Add patch (typos.diff) to fix a few spelling errors.
+  * Add patch (manpage-typography.diff) to improve typography in the manual
+    page.
+  * Force gzip compression for .debian.tar.
+  * Don't use dh_testdir; instead use target dependencies to ensure that
+    debian/rules is run from the correct directory.
+  * Run dh_clean as the first command in the clean target.
+  * Use dh-buildinfo:
+    + Update debian/rules.
+    + Add the package to Build-Depends.
+
+ -- Jakub Wilk <jwilk@debian.org>  Sun, 02 Feb 2014 23:15:42 +0100
+
 rc (1.7.1-4) unstable; urgency=low
 
   * New maintainer (closes: #660508). Thanks to Decklin Foster for his past
