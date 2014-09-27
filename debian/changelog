@@ -1,3 +1,24 @@
+rc (1.7.2-1) unstable; urgency=low
+
+  * New upstream release.
+    + Support quoting for filename completion in GNU readline
+      (closes: #432899). Thanks to Raf Czlonka for the bug report.
+    + Fix quoting of glob characters.
+    + Allow $"x as a synonym for $^x.
+  * Drop patches that were applied upstream:
+    - aclocal-quoting.diff
+    - configure-modernize-ac-init-automake.diff
+    - trip-secure-tmp.diff
+    - typos.diff
+  * Update manpage-typography.diff.
+  * Refresh other patches.
+  * Update debian/rules to enable GNU Readline support.
+  * Update debian/copyright.
+  * Add Homepage field.
+  * Add DEP-8 test that runs adequate(1) against the package.
+
+ -- Jakub Wilk <jwilk@debian.org>  Sat, 27 Sep 2014 22:27:22 +0200
+
 rc (1.7.1-5) unstable; urgency=low
 
   * Add patch (aclocal-quoting.diff) to fix underquoted calls to AC_DEFUN in
@@ -19,7 +40,7 @@ rc (1.7.1-5) unstable; urgency=low
     + Add byacc to Build-Depends.
   * Bump standards version to 3.9.5 (no changes needed).
   * Add patch (trip-secure-tmp.diff) to fix insecure use of /tmp in the test
-    suite (closes: #737125).
+    suite (closes: #737125, CVE-2014-1936).
   * Add patch (trip-hide-envvars.diff) to hide environment variables from the
     test suite output, so that they are not accidentally exposed in a build log.
   * Run tests at build time.

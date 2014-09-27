@@ -1,11 +1,8 @@
 This is the Debian GNU/Linux prepackaged version of the rc shell. rc was
-written by Byron Rakitzis, and is currently maintained by Tim Goodwin
-<tjg@star.le.ac.uk>.
+written by Byron Rakitzis, and is currently maintained by Toby Goodwin
+<toby@paccrat.org>.
 
-The package was originally downloaded from <http://www.star.le.ac.uk/~tjg/rc/>.
-While the site is no longer accessible, a copy of the site is available at
-<http://rc-shell.slackmatic.org/>. The source is also still available from
-<ftp://ftp.sys.utoronto.ca/pub/rc/>.
+The package was downloaded from <http://tobold.org/article/rc>.
 
 This package was maintained by:
 
@@ -15,7 +12,7 @@ This package was maintained by:
 
 License:
 
-  Copyright 1991 Byron Rakitzis.  All rights reserved.
+  Copyright 1991, 2001, 2002, 2003, 2014 Byron Rakitzis.
 
   This software is not subject to any license of the American Telephone
   and Telegraph Company or of the Regents of the University of California.

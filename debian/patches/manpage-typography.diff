@@ -438,7 +438,18 @@ Last-Update: 2014-01-29
  .De
  .TP
  The redundant inner parentheses must be omitted.
-@@ -2138,7 +2138,7 @@
+@@ -2060,8 +2060,8 @@
+ consecutive occurrences of the separator are treated the same as a
+ single occurrence.
+ .Ds
+-.Cr "ifs=! { x = `{echo -n a!!b}; whatis x }"
+-.Cr "x=(a b) # NOT x=(a '' b)"
++.Cr "ifs=! { x = \`{echo -n a!!b}; whatis x }"
++.Cr "x=(a b) # NOT x=(a \(aq\(aq b)"
+ .PP
+ Bug reports should be mailed to
+ .Cr "<toby@paccrat.org>" .
+@@ -2145,7 +2145,7 @@
  to the name of a function being executed/file
  being sourced.
  .SH "SEE ALSO"

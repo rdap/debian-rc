@@ -1,11 +1,11 @@
 Description: improve error handling in the which() function
 Author: Jakub Wilk <jwilk@debian.org>
-Forwarded: no
-Last-Update: 2014-01-28
+Forwarded: yes
+Last-Update: 2014-02-06
 
 --- a/which.c
 +++ b/which.c
-@@ -95,7 +95,11 @@
+@@ -109,7 +109,11 @@
  #endif
  		if (ngroups) {	
  			gidset = ealloc(ngroups * sizeof(GETGROUPS_T));

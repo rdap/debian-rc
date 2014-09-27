@@ -15,7 +15,7 @@ ldflags = $(shell dpkg-buildflags --get LDFLAGS) -Wl,--as-needed
 configure_flags += \
 	--prefix=/usr \
 	--mandir='$${prefix}/share/man' \
-	--with-readline \
+	--with-edit=gnu \
 	--with-addon \
 	CFLAGS='$(cflags)' \
 	CPPFLAGS='$(cppflags)' \

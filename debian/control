@@ -9,6 +9,7 @@ Build-Depends: debhelper (>= 7), dh-buildinfo,
  byacc,
  libncurses5-dev, libreadline-dev,
  procps
+Homepage: http://tobold.org/article/rc
 XS-Testsuite: autopkgtest
 
 Package: rc

@@ -9,7 +9,7 @@ Last-Update: 2012-06-09
 
 --- a/rc.h
 +++ b/rc.h
-@@ -428,7 +428,11 @@
+@@ -379,7 +379,11 @@
  extern int mvfd(int, int);
  extern int starstrcmp(const void *, const void *);
  extern void pr_error(char *, int);
