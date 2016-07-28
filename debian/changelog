@@ -1,3 +1,26 @@
+rc (1.7.2-2) unstable; urgency=medium
+
+  * QA upload.
+  * Set QA Group as maintainer. (see #770372)
+  * Migrations:
+      - debian/copyright to 1.0 format.
+      - DH level to 9.
+  * debian/control:
+      - Bumped Standards-Version to 3.9.8.
+      - Removed the obsoleted field XS-Testsuite.
+      - Removed unnecessary build dependency dpkg-dev.
+  * debian/patches/:
+      - Renamed all patches:
+          ~ which-error-handling.diff to 10_which-error-handling.patch.
+          ~ panic-attribute-noreturn.diff to 20_panic-attribute-noreturn.patch.
+          ~ trip-hide-envvars.diff to 30_trip-hide-envvars.patch.
+          ~ manpage-typography.diff to 40_manpage-typography.patch.
+  * debian/watch:
+      - Bumped to version 4.
+      - Improved.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Thu, 28 Jul 2016 15:32:35 -0300
+
 rc (1.7.2-1) unstable; urgency=low
 
   * New upstream release.
@@ -25,7 +48,7 @@ rc (1.7.1-5) unstable; urgency=low
     acinclude.m4.
   * Add patch (configure-modernize-ac-init-automake.diff) to modernize the
     AM_INIT_AUTOMAKE call in the configure script.
-  * Add “compile” to the list of ignored files in debian/source/options.
+  * Add "compile" to the list of ignored files in debian/source/options.
   * Add patch (panic-attribute-noreturn.diff) to mark the panic() function
     with attribute noreturn, in order to avoid false positive warnings about
     array bounds.
@@ -68,12 +91,12 @@ rc (1.7.1-4) unstable; urgency=low
   * Rewrite debian/rules from scratch.
     + Pass --configure to the configure script only when cross-building.
     + Build out-of-tree.
-    + Don't ignore ‘make distclean’ in the clean target; delete the whole
+    + Don't ignore 'make distclean' in the clean target; delete the whole
       build directory instead.
     + Don't pass --info-dir to the configure script, and don't call
       dh_installinfo, since there is no info documentation anyway.
     + Link using --as-needed, in order to avoid dependency on libtinfo.
-  * Regerate autoconf files at build time:
+  * Regenerate autoconf files at build time:
     + Add build-dependency on autoconf, automake.
     + Add extend-diff-ignore to debian/source/options, to ignore regenerated
       files.
@@ -89,7 +112,7 @@ rc (1.7.1-4) unstable; urgency=low
   * Convert to source format 3.0 (quilt).
     + Add debian/source/format.
   * Bump standards version to 3.9.3.
-    + Change menu sertion from “Apps/Shells” to “Applications/Shells”.
+    + Change menu sertion from 'Apps/Shells' to 'Applications/Shells'.
   * Don't ignore errors in maintainer scripts.
   * Don't hardcode paths to {add,remove}-shell in maintainer scripts.
   * Add watch file.

@@ -1,4 +1,4 @@
-which-error-handling.diff
-panic-attribute-noreturn.diff
-trip-hide-envvars.diff
-manpage-typography.diff
+10_which-error-handling.patch
+20_panic-attribute-noreturn.patch
+30_trip-hide-envvars.patch
+40_manpage-typography.patch
