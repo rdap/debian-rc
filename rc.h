@@ -1,4 +1,4 @@
-#define NDEBUG 1
+#undef NDEBUG
 #include "config.h"
 #include "proto.h"
 
@@ -194,7 +194,6 @@ extern void sigint(int);
 
 /* exec.c */
 extern void exec(List *, bool);
-extern void doredirs(void);
 
 #if HASH_BANG
 #define rc_execve execve
@@ -251,6 +250,7 @@ extern void fnassign_string(char *);
 extern void fnrm(char *);
 extern void initenv(char **);
 extern void inithash(void);
+extern void set_exportable(char *, bool);
 extern void setsigdefaults(bool);
 extern void inithandler(void);
 extern void varassign(char *, List *, bool);
