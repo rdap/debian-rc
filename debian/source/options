@@ -1,4 +1,3 @@
-compression = gzip
 extend-diff-ignore = "^INSTALL$"
 extend-diff-ignore = "^Makefile[.]in$"
 extend-diff-ignore = "^aclocal[.]m4$"
