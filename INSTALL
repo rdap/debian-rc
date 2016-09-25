@@ -11,6 +11,7 @@ need to configure, build, test, and install rc.
 This will build rc in the source directory (see below for details on how
 to build rc in a different directory).
 
+
 BUILD AND CONFIGURATION OPTIONS
 
 There are lots of options you can give to configure to modify rc's
@@ -34,17 +35,17 @@ descending order of usefulness.
   for details) to provide EMACS style command line editing and history.
   If the editline library is not installed in a standard place, you can
   tell configure where to find it by setting the environment variable
-  LIBS.  For example, the maintainer builds rc by copying libedit.a into
-  the rc build directory and then running this configure command.
+  LDFLAGS.  For example, the maintainer builds rc by copying libedit.a
+  into the rc build directory and then running this configure command.
 
-    LIBS=-L. sh ../rc-1.5b3/configure --with-editline
+    LDFLAGS=-L. sh ../rc-1.5b3/configure --with-editline
 
   --with-vrl
 
   This option tells rc to use the vrl package (see the README file for
   details) to provide EMACS style command line editing and history.  As
   for `--with-editline', you may need to set the environment variable
-  LIBS appropriately.
+  LDFLAGS appropriately.
 
   --with-readline
 
@@ -52,10 +53,10 @@ descending order of usefulness.
   to editline or vrl, but has many more features.  The readline package
   is over 6 times the size of editline (whether you count lines of code,
   or the library itself).  As for editline, you can set the environment
-  variable LIBS if your readline library is not installed in a standard
-  place.
+  variable LDFLAGS if your readline library is not installed in a
+  standard place.
 
-    LIBS=-L/usr/gnu/lib sh configure --with-readline
+    LDFLAGS=-L/usr/gnu/lib sh configure --with-readline
 
   --with-history
 
@@ -105,7 +106,7 @@ probably don't want to bother with `--with-history'.
   The default path is constructed at configure time, and consists
   of each of the following directories that exist, in order.
 
-      /usr/local/bin /usr/bin /usr/ucb /bin .
+      /usr/local/bin /usr/bin /usr/bsd /usr/ucb /bin .
 
   You can disable this, or specify a different default path.  Note that
   the quote marks (") must be seen by configure; unless you are already
@@ -134,6 +135,25 @@ do this.  This will produce some output, and should end with "trip is
 complete".  If the trip instead ends with "trip took a wrong turn..."
 please contact the maintainer.
 
+
+LARGE FILE SUPPORT
+
+This release of rc supports large files (i.e. with 64 bit offsets), on
+systems where the configure script can figure out how to enable this.
+When you run `make trip' (you always run `make trip', right?) the
+penultimate line of output (before "trip complete") reports whether
+large file support seems to be working or not.
+
+Large file support is a function of file systems, as well as
+applications.  For example, NFS and tmpfs file systems often do not
+support large files.  The test used by `make trip' is therefore
+subject to false negatives.  That is, a report that "large file
+support seems NOT to be working" may be erroneous.  To minimise this
+possibility, the test is performed both in the current directory
+(where you built rc) and /tmp.  (I don't think there's any scenario
+where a false positive can be reported.)
+
+
 BUILDING IN ANOTHER DIRECTORY
 
 If you have a suitable `make', you can build rc in a different directory
@@ -141,6 +161,7 @@ from where the sources are held.  This is particularly useful if you
 are building rc for multiple architectures.  All you need do is specify
 the path to the configure script in the first step.  Suitable `make's
 include GNU, HP-UX, and SunOS, but not Irix, nor Ultrix, nor UnixWare.
+
 
 COMPILATION WARNINGS
 
@@ -150,14 +171,18 @@ produce a few warnings.
 Warnings about "implicit declaration" of system functions may occur if
 your system's include files are deficient---they are usually harmless.
 
-There is a warning about "variable `n' might be clobbered" in walk.c.
-I'm not sure how serious this warning is, nor how to eliminate it.
+Some older versions of gcc warn about "variable `n' might be
+clobbered" in walk.c.  As far as I can tell, this is gcc telling you
+that it might not be compiling the code correctly!  I don't know how
+to eliminate the warning, but it doesn't appear to cause any problems
+in practice.
 
 On some systems there are warnings about "passing arg 2 of `getgroups'
 from incompatible pointer type" in which.c.  I believe this is due to an
 incorrect declaration of `getgroups()' in those systems' header files.
 
 Any other warnings should be reported to the maintainer.
+
 
 OLD C
 
