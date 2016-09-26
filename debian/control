@@ -3,10 +3,7 @@ Section: shells
 Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
 Standards-Version: 3.9.8
-Build-Depends: debhelper (>= 9),
-               dh-buildinfo,
-               autoconf,
-               automake,
+Build-Depends: debhelper (>= 10),
                byacc,
                libncurses5-dev,
                libreadline-dev,
