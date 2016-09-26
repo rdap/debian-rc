@@ -2,3 +2,4 @@
 20_panic-attribute-noreturn.patch
 30_trip-hide-envvars.patch
 40_manpage-typography.patch
+50_reproducible-build.patch
