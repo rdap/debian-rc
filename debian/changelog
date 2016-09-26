@@ -1,3 +1,25 @@
+rc (1.7.4-1) UNRELEASED; urgency=low
+
+  * QA upload.
+  * New upstream release.
+  * debian/copyright:
+    - Upstream license changed to zlib.
+  * debian/source/options:
+    - Don't enforce gzip compression.
+  * debian/rc.menu:
+    - Drop file, as the menu system is now deprecated.
+  * debian/rules:
+    - Convert to dh-style build with compat level 10.
+  * debian/control:
+    - Drop unnecessary dependencies to autoconf/automake/dh-buildinfo.
+    - Add Vcs-* fields; imported history to collab-maint.
+  * debian/patches:
+    - Honour SOURCE_DATE_EPOCH for embedded timestamp.
+      Thanks to Chris Lamb for providing the patch! (Closes: #833441)
+    - Refresh patches.
+
+ -- Reiner Herrmann <reiner@reiner-h.de>  Sun, 25 Sep 2016 17:37:13 +0200
+
 rc (1.7.2-2) unstable; urgency=medium
 
   * QA upload.
