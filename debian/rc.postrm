@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-if [ "$1" = "remove" ]; then
-    remove-shell /usr/bin/rc
-fi
+remove-shell /usr/bin/rc
 
 #DEBHELPER#

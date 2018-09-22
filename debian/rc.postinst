@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-if [ "$1" = "configure" ] && [ -z "$2" ]; then
-    add-shell /usr/bin/rc
-fi
+update-alternatives --install /bin/rc rc /usr/bin/rc 30
+
+add-shell /usr/bin/rc
 
 #DEBHELPER#
